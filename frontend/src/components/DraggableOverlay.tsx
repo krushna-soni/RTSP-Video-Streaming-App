@@ -1,4 +1,4 @@
-// frontend/src/components/DraggableOverlay.tsx - MOBILE TOUCH OPTIMIZED VERSION
+// frontend/src/components/DraggableOverlay.tsx 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Box, Typography } from '@mui/material';
 
