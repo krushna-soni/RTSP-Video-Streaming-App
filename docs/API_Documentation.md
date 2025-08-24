@@ -512,5 +512,3 @@ curl -X POST http://localhost:5000/api/init-sample-data
 ```
 
 ---
-
-**📝 Note:** This API documentation reflects the current implementation as of January 2025. For the most up-to-date information, always refer to the source code and test the endpoints directly.
