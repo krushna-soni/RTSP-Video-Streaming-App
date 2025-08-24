@@ -1,4 +1,4 @@
-// frontend/src/components/VideoPlayer.tsx - MOBILE RESPONSIVE VERSION
+// frontend/src/components/VideoPlayer.tsx 
 import React, { useState, useRef, useEffect } from 'react';
 import ReactPlayer from "react-player";
 import {
