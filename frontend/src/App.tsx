@@ -1,4 +1,4 @@
-// frontend/src/App.tsx - MOBILE RESPONSIVE VERSION
+// frontend/src/App.tsx 
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
