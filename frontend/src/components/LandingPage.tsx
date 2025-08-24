@@ -1,4 +1,4 @@
-// frontend/src/components/LandingPage.tsx - MOBILE RESPONSIVE VERSION
+// frontend/src/components/LandingPage.tsx 
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Container,
