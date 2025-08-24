@@ -1,0 +1,669 @@
+/* frontend/src/index.css - ENHANCED RESPONSIVE GLOBAL STYLES */
+
+/* Base Reset and Mobile Optimization */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%; /* Prevent font size adjustment on iOS */
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Better scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  
+  /* Mobile viewport optimization */
+  width: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* iOS Safari */
+}
+
+/* Fix for iOS Safari viewport height issues */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Improved focus styles for accessibility */
+*:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users, keep for keyboard users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Code styling */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Mobile-First Responsive Utilities */
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .mobile-only {
+    display: none;
+  }
+  
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* Touch-optimized interactive elements */
+@media (hover: none) and (pointer: coarse) {
+  /* Mobile/touch devices */
+  button,
+  .MuiButton-root,
+  .MuiIconButton-root,
+  .MuiFab-root {
+    min-height: 44px !important; /* Apple's recommended minimum */
+    min-width: 44px !important;
+  }
+  
+  .MuiSlider-thumb {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  .MuiChip-root {
+    min-height: 32px !important;
+  }
+  
+  /* Larger text inputs for better usability */
+  .MuiTextField-root .MuiInputBase-input {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+    padding: 12px 14px !important;
+  }
+}
+
+/* Enhanced video player styles */
+.video-container {
+  position: relative;
+  width: 100%;
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-container::before {
+  content: '';
+  display: block;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Mobile video controls optimization */
+@media (max-width: 600px) {
+  .video-controls {
+    padding: 12px !important;
+  }
+  
+  .video-controls .MuiSlider-root {
+    margin-bottom: 8px !important;
+  }
+  
+  .video-time-display {
+    font-size: 0.75rem !important;
+    min-width: 90px !important;
+  }
+}
+
+/* Draggable overlay enhancements */
+.overlay-container {
+  touch-action: none; /* Prevent scrolling when editing overlays */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.overlay-edit-mode .overlay-container {
+  cursor: grab;
+}
+
+.overlay-edit-mode .overlay-container:active {
+  cursor: grabbing;
+}
+
+/* Mobile drawer and modal optimizations */
+.MuiDrawer-paper {
+  max-height: 90vh !important;
+}
+
+@media (max-width: 600px) {
+  .MuiDrawer-paper {
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+    max-height: 80vh !important;
+  }
+  
+  .MuiDialog-paper {
+    margin: 16px !important;
+    width: calc(100vw - 32px) !important;
+    max-width: none !important;
+  }
+}
+
+/* Toast/Snackbar mobile positioning */
+@media (max-width: 600px) {
+  .MuiSnackbar-root {
+    bottom: 70px !important; /* Account for mobile browser UI */
+    left: 16px !important;
+    right: 16px !important;
+    transform: none !important;
+  }
+}
+
+/* Loading and skeleton optimizations */
+.MuiSkeleton-root {
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .MuiSkeleton-text {
+    height: 1.2em !important;
+  }
+}
+
+/* Form and input enhancements */
+.MuiTextField-root {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .MuiFormControl-root {
+    margin-bottom: 16px !important;
+  }
+}
+
+/* Button group responsive behavior */
+.MuiButtonGroup-root {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .MuiButtonGroup-root {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .MuiButtonGroup-root .MuiButton-root {
+    border-radius: 4px !important;
+    border: 1px solid rgba(25, 118, 210, 0.5) !important;
+    margin-bottom: 8px;
+  }
+  
+  .MuiButtonGroup-root .MuiButton-root:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Chip responsive behavior */
+@media (max-width: 600px) {
+  .MuiChip-root {
+    margin: 2px !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Alert responsive behavior */
+@media (max-width: 600px) {
+  .MuiAlert-root {
+    font-size: 0.8rem !important;
+    padding: 8px 12px !important;
+  }
+  
+  .MuiAlert-action {
+    padding: 0 !important;
+    margin-left: 8px !important;
+  }
+}
+
+/* Card responsive behavior */
+@media (max-width: 600px) {
+  .MuiCard-root {
+    margin: 8px 0 !important;
+  }
+  
+  .MuiCardContent-root {
+    padding: 12px !important;
+  }
+  
+  .MuiCardContent-root:last-child {
+    padding-bottom: 12px !important;
+  }
+}
+
+/* Table responsive behavior */
+@media (max-width: 600px) {
+  .MuiTable-root {
+    font-size: 0.8rem !important;
+  }
+  
+  .MuiTableCell-root {
+    padding: 8px !important;
+  }
+}
+
+/* Navigation and app bar mobile optimizations */
+@media (max-width: 600px) {
+  .MuiAppBar-root {
+    padding: 0 8px !important;
+  }
+  
+  .MuiToolbar-root {
+    min-height: 56px !important;
+    padding: 0 8px !important;
+  }
+}
+
+/* Fab positioning for mobile */
+@media (max-width: 600px) {
+  .MuiFab-root {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 1050 !important;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .MuiButton-root {
+    border: 2px solid currentColor !important;
+  }
+  
+  .MuiChip-root {
+    border: 1px solid currentColor !important;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  /* Custom dark mode styles if needed */
+  .video-container {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print,
+  .MuiFab-root,
+  .MuiSpeedDial-root,
+  .video-controls {
+    display: none !important;
+  }
+  
+  .MuiPaper-root {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* Landscape orientation optimizations for mobile */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  .video-container {
+    height: 70vh !important;
+  }
+  
+  .mobile-landscape-full {
+    height: 100vh !important;
+  }
+  
+  .MuiAppBar-root {
+    display: none; /* Hide app bar in landscape for more space */
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1200px) {
+  .container-xl {
+    max-width: 1400px !important;
+  }
+  
+  .video-container {
+    max-height: 80vh;
+  }
+}
+
+/* Ultra-wide screen support */
+@media (min-width: 1600px) {
+  .container-ultra {
+    max-width: 1600px !important;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+@media (min-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+}
+
+/* Firefox scrollbar styling */
+@supports (scrollbar-width: thin) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 #f1f1f1;
+  }
+}
+
+/* Utility classes for responsive development */
+.container-fluid {
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 600px) {
+  .container-fluid {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-wrap {
+  white-space: normal !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Error states */
+.error-boundary {
+  padding: 24px;
+  text-align: center;
+  background-color: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+@media (max-width: 600px) {
+  .error-boundary {
+    padding: 16px;
+    margin: 16px;
+  }
+}
+
+/* Video player specific enhancements */
+.react-player {
+  background-color: #000;
+}
+
+.react-player video {
+  object-fit: contain;
+  background-color: #000;
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-appearance: none) {
+  .video-container {
+    -webkit-transform: translateZ(0); /* Force hardware acceleration */
+    transform: translateZ(0);
+  }
+  
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #1976d2;
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-webkit-slider-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+}
+
+/* Android Chrome specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  .video-container {
+    transform: translateZ(0);
+  }
+}
+
+/* Safe area handling for devices with notches */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Fullscreen mode optimizations */
+.fullscreen-mode {
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: contain;
+  background-color: #000;
+}
+
+.fullscreen-mode .video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+/* Animation performance */
+@media (prefers-reduced-motion: no-preference) {
+  .smooth-transition {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateZ(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateZ(0);
+  }
+  70% {
+    transform: scale(0.9) translateZ(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* Responsive image handling */
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.aspect-ratio-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.aspect-ratio-container::before {
+  content: '';
+  display: block;
+  padding-top: 56.25%; /* 16:9 by default */
+}
+
+.aspect-ratio-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Touch feedback */
+@media (hover: none) {
+  .touch-feedback:active {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Focus management for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Prevent text selection on interactive elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Enable text selection where appropriate */
+.allow-select {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
