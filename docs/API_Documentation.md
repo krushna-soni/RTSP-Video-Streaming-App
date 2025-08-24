@@ -16,8 +16,6 @@
 
 The RTSP Streaming Application API provides RESTful endpoints for managing video overlay settings. This API supports CRUD operations for text and logo overlays that can be positioned and resized on video streams.
 
-**Version:** 1.0  
-**Last Updated:** January 2025  
 **Content-Type:** `application/json`
 
 ## Base URL
